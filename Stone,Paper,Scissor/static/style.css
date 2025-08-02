@@ -1,0 +1,108 @@
+body {
+  background-color: #1e1e1e;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  padding: 30px;
+  background-color: #2c2c2c;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #000;
+  width: 350px;
+}
+
+h1 {
+  margin-bottom: 10px;
+  color: #00d8ff;
+}
+
+p {
+  margin-top: 0;
+  color: #ccc;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+}
+
+.choice {
+  background-color: #3a3a3a;
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 5px #000;
+}
+
+.choice:hover {
+  background-color: #505050;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00ffd5;
+}
+
+.choice span {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #aaa;
+}
+
+.result {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.result .win {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.result .lose {
+  color: #ff4c4c;
+  font-weight: bold;
+}
+
+.result .draw {
+  color: #ffa500;
+  font-weight: bold;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  background-color: #111;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  box-shadow: 0 0 5px #333;
+}
+
+.scoreboard span {
+  font-weight: bold;
+}
+
+#won {
+  color: #00ff88;
+}
+
+#lost {
+  color: #ff4c4c;
+}
+
+#draw {
+  color: #ffa500;
+}

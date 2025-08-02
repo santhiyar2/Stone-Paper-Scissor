@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>Rock Paper Scissors</h1>
+    <p>Select your Weapon</p>
+
+    <div class="choices">
+      <div class="choice" onclick="makeChoice('rock')">
+        ✊
+        <span>Rock</span>
+      </div>
+      <div class="choice" onclick="makeChoice('paper')">
+        ✋
+        <span>Paper</span>
+      </div>
+      <div class="choice" onclick="makeChoice('scissors')">
+        ✌️
+        <span>Scissors</span>
+      </div>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <div class="scoreboard">
+      <div>Won: <span id="won">0</span></div>
+      <div>Lost: <span id="lost">0</span></div>
+      <div>Draw: <span id="draw">0</span></div>
+    </div>
+  </div>
+
+  <script>
+    let won = 0, lost = 0, draw = 0;
+
+    function makeChoice(choice) {
+      fetch('/play', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ choice: choice })
+      })
+      .then(res => res.json())
+      .then(data => {
+        let resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+          You chose <strong>${data.user}</strong>, Computer chose <strong>${data.computer}</strong><br>
+          <strong class="${data.result.includes('Win') ? 'win' : data.result.includes('Lose') || data.result.includes('Computer') ? 'lose' : 'draw'}">${data.result}</strong>
+        `;
+
+        if (data.result === "You Win!") {
+          won++;
+          document.getElementById('won').textContent = won;
+        } else if (data.result === "Computer Wins!") {
+          lost++;
+          document.getElementById('lost').textContent = lost;
+        } else {
+          draw++;
+          document.getElementById('draw').textContent = draw;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
